@@ -3,7 +3,15 @@ import React from 'react';
 import '../static/components/header.css'
 import {Row,Col,Menu} from "antd"
 import { HomeOutlined,InstagramOutlined,RedditOutlined} from '@ant-design/icons'
+import Router from "next/router"
 const Header = () => {
+    const handleClick = (e) => {
+        if(e.key=="Home"){
+            Router.push("/")
+        }else{
+            Router.push("/list")
+        }
+    }
     return (
         <div className="header">
             <Row type="flex" justify="center">
@@ -13,7 +21,7 @@ const Header = () => {
                 </Col>
 
                 <Col className="memu-div" xs={0} sm={0} md={12} lg={10} xl={10}>
-                    <Menu  mode="horizontal">
+                    <Menu  mode="horizontal" onClick={handleClick}>
                         <Menu.Item key="Home" icon={<HomeOutlined />}>
                             博客首页
                         </Menu.Item>
